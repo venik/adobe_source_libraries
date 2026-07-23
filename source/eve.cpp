@@ -22,7 +22,6 @@
 #include <adobe/cmath.hpp>
 #include <adobe/forest.hpp>
 #include <adobe/functional.hpp>
-#include <adobe/iterator.hpp>
 #include <adobe/numeric.hpp>
 
 #ifndef NDEBUG

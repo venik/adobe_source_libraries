@@ -6,11 +6,10 @@
 /**************************************************************************************************/
 
 #include <adobe/algorithm/clamp.hpp>
-#include <stdexcept>
 
 #define BOOST_TEST_MAIN
 
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner) // NOLINT(misc-include-cleaner)
 
 BOOST_AUTO_TEST_CASE(clamp_test) {
     using adobe::clamp;

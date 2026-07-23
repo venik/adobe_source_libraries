@@ -15,11 +15,8 @@
 #include <mutex>
 
 #include "iomanip_flat.hpp"
-#include <adobe/adam_evaluate.hpp>
-#include <adobe/algorithm/find.hpp>
 #include <adobe/implementation/token.hpp>
 #include <adobe/iomanip_asl_cel.hpp>
-#include <adobe/once.hpp>
 
 
 /**************************************************************************************************/

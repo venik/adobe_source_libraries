@@ -15,8 +15,6 @@
 #include <boost/range/begin.hpp>
 #include <boost/range/end.hpp>
 
-#include <algorithm>
-
 /**************************************************************************************************/
 
 namespace adobe {

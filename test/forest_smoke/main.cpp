@@ -6,12 +6,9 @@
 
 #include <cassert>
 #include <iostream>
-#include <limits>
-#include <new>
 
-#include <adobe/algorithm.hpp>
+#include <adobe/algorithm/find.hpp>
 #include <adobe/forest.hpp>
-#include <boost/range.hpp>
 
 template <typename R> // R is a depth adaptor range
 void output(const R& f) {

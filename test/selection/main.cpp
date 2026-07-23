@@ -5,16 +5,18 @@
 */
 /**************************************************************************************************/
 
-#include <adobe/config.hpp>
-
-#include <adobe/algorithm.hpp>
 #include <adobe/selection.hpp>
 
 #include <iostream>
 #include <iterator>
 #include <sstream>
-#include <utility>
 #include <vector>
+
+#include <boost/next_prior.hpp>
+#include <boost/range/begin.hpp>
+#include <boost/range/end.hpp>
+
+#include <adobe/algorithm/selection_algorithms.hpp>
 
 /**************************************************************************************************/
 

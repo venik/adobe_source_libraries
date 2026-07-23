@@ -7,14 +7,12 @@
 
 #include <adobe/functional.hpp> // file be tested included first
 
-#include <utility>
-
 #include <adobe/enum_ops.hpp>
 
 #define BOOST_TEST_MAIN
 
 // boost
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner) // NOLINT(misc-include-cleaner)
 
 /**************************************************************************************************/
 

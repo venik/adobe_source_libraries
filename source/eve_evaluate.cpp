@@ -12,13 +12,10 @@
 
 #include <adobe/algorithm/sort.hpp>
 #include <adobe/algorithm/transform.hpp>
-#include <adobe/array.hpp>
 #include <adobe/cassert.hpp>
 #include <adobe/dictionary.hpp>
 #include <adobe/name.hpp>
-#include <adobe/once.hpp>
 #include <adobe/static_table.hpp>
-#include <adobe/string.hpp>
 #include <adobe/virtual_machine.hpp>
 
 /**************************************************************************************************/
@@ -200,24 +197,23 @@ eve_callback_suite_t bind_layout(const bind_layout_proc_t& proc, sheet_t& sheet,
     eve_callback_suite_t suite;
 
     suite.add_view_proc_m =
-        [&evaluator, proc](const eve_callback_suite_t::position_t& parent, const line_position_t& /* parse_location */,
-              name_t name, const array_t& parameters, const std::string& /* brief */,
-              const std::string& /* detailed */) -> eve_callback_suite_t::position_t {
+        [&evaluator, proc](const eve_callback_suite_t::position_t& parent,
+                           const line_position_t& /* parse_location */, name_t name,
+                           const array_t& parameters, const std::string& /* brief */,
+                           const std::string& /* detailed */) -> eve_callback_suite_t::position_t {
         return proc(parent, name, evaluate_named_arguments(evaluator, parameters));
     };
-    suite.add_cell_proc_m = 
-        [&sheet](adobe::eve_callback_suite_t::cell_type_t type,
-              adobe::name_t name, const adobe::line_position_t& position,
-              const adobe::array_t& init_or_expr,
-              const std::string& /* brief */, const std::string& /* detailed */) -> void {
+    suite.add_cell_proc_m =
+        [&sheet](adobe::eve_callback_suite_t::cell_type_t type, adobe::name_t name,
+                 const adobe::line_position_t& position, const adobe::array_t& init_or_expr,
+                 const std::string& /* brief */, const std::string& /* detailed */) -> void {
         add_cell(sheet, type, name, position, init_or_expr);
     };
     suite.add_relation_proc_m =
-        [&sheet](const adobe::line_position_t& position,
-                  const adobe::array_t& conditional,
-                  const adobe::eve_callback_suite_t::relation_t* first,
-                  const adobe::eve_callback_suite_t::relation_t* last,
-                  const std::string& /* brief */, const std::string& /* detailed */) -> void {
+        [&sheet](const adobe::line_position_t& position, const adobe::array_t& conditional,
+                 const adobe::eve_callback_suite_t::relation_t* first,
+                 const adobe::eve_callback_suite_t::relation_t* last,
+                 const std::string& /* brief */, const std::string& /* detailed */) -> void {
         add_relation(sheet, position, conditional, first, last);
     };
     suite.add_interface_proc_m =
@@ -227,10 +223,7 @@ eve_callback_suite_t bind_layout(const bind_layout_proc_t& proc, sheet_t& sheet,
                  const std::string& /* detailed */) -> void {
         sheet.add_interface(name, linked, position1, initializer, position2, expression);
     };
-    suite.finalize_sheet_proc_m = 
-        [&sheet]() -> void {
-        sheet.update();
-    };
+    suite.finalize_sheet_proc_m = [&sheet]() -> void { sheet.update(); };
 
     return suite;
 }

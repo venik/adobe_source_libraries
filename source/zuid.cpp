@@ -6,8 +6,6 @@
 
 /**************************************************************************************************/
 
-#include <adobe/config.hpp>
-#include <adobe/implementation/zuid_sys_dep.hpp>
 #include <adobe/implementation/zuid_uuid.hpp>
 #include <adobe/once.hpp>
 #include <adobe/zuid.hpp>
@@ -15,7 +13,6 @@
 #include <array>
 #include <cstdint>
 #include <cstdio>
-#include <memory>
 #include <mutex>
 #include <string>
 #include <vector>

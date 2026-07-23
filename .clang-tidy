@@ -1,4 +1,10 @@
 ---
+Checks: >
+  clang-diagnostic-*,
+  clang-analyzer-*,
+  misc-include-cleaner
+CheckOptions:
+  misc-include-cleaner.MissingIncludes: false
 SystemHeaders: false
-HeaderFilterRegex: '^(?!.*(boost|_deps)).*$'
+HeaderFilterRegex: "^(?!.*(boost|_deps)).*$"
 FormatStyle: none

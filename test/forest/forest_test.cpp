@@ -6,12 +6,9 @@
 
 /**************************************************************************************************/
 
-#include <algorithm>
-
 #define BOOST_TEST_MAIN
 
-#include <boost/mpl/list.hpp>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 #include <adobe/forest.hpp>
 #include <adobe/test/check_traversable.hpp>

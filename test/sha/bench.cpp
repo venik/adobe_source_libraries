@@ -6,12 +6,8 @@
 
 /**************************************************************************************************/
 
-// config
-#include <adobe/config.hpp>
-
 // stdc++
 #include <iostream>
-#include <sstream>
 
 #ifndef USING_OPENSSL
 #define USING_OPENSSL 0

@@ -14,34 +14,19 @@ with regards to state.
 
 #include <array>
 #include <cassert>
-#include <functional>
-#include <iomanip>
 #include <istream>
 #include <optional>
-#include <sstream>
 #include <utility>
-
-#include <boost/config.hpp>
 
 #include <adobe/any_regular.hpp>
 #include <adobe/array.hpp>
 #include <adobe/dictionary.hpp>
-#include <adobe/name.hpp>
-#include <adobe/string.hpp>
-
 #include <adobe/expression_parser.hpp>
+#include <adobe/name.hpp>
+
 #include <adobe/implementation/lex_stream.hpp>
 #include <adobe/implementation/parser_shared.hpp>
 #include <adobe/implementation/token.hpp>
-
-#ifdef BOOST_MSVC
-namespace std {
-using ::isalnum;
-using ::isalpha;
-using ::isdigit;
-using ::isspace;
-} // namespace std
-#endif
 
 using namespace std;
 using namespace adobe;

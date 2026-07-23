@@ -6,8 +6,6 @@
 
 /**************************************************************************************************/
 
-#include <adobe/config.hpp>
-
 #include <adobe/xml_parser.hpp>
 #include <adobe/xstring.hpp>
 

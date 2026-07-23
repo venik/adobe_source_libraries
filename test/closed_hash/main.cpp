@@ -13,10 +13,7 @@
 #include <cassert>
 #include <iterator>
 
-#include <boost/next_prior.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner) // NOLINT(misc-inlucde-cleaner)
 
 #include <adobe/test/check_regular.hpp>
 

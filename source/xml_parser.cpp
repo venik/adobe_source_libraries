@@ -5,23 +5,10 @@
 */
 /**************************************************************************************************/
 
-#include <adobe/config.hpp>
-
 #include <adobe/implementation/expression_filter.hpp>
 #include <adobe/xml_parser.hpp>
 
-#include <map>
-
 #include <adobe/unicode.hpp>
-
-/**************************************************************************************************/
-
-#ifdef BOOST_MSVC
-namespace std {
-using ::isdigit;
-using ::isxdigit;
-} // namespace std
-#endif
 
 /**************************************************************************************************/
 

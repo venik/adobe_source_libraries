@@ -17,9 +17,6 @@
 #include <adobe/implementation/zuid_sys_dep.hpp>
 #include <adobe/once.hpp>
 
-#if ADOBE_PLATFORM_WIN
-#include <windows.h>
-#endif
 
 #if defined(BOOST_MSVC)
 #pragma warning(push)
@@ -27,7 +24,7 @@
 #pragma warning(disable : 4996) // c runtime library deprecated function warning
 #endif
 
-#include <boost/date_time/posix_time/posix_time_types.hpp>
+#include <boost/date_time/posix_time/posix_time_types.hpp> // NOLINT(misc-include-cleaner)
 
 #if defined(BOOST_MSVC)
 #pragma warning(pop)

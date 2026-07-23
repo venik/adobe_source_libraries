@@ -5,7 +5,6 @@
 */
 /**************************************************************************************************/
 
-#include <adobe/config.hpp>
 #include <adobe/dancing_links.hpp>
 #include <adobe/timer.hpp>
 

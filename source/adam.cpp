@@ -18,10 +18,8 @@
 #include <adobe/algorithm/find.hpp>
 #include <adobe/algorithm/for_each.hpp>
 #include <adobe/algorithm/sort.hpp>
-#include <adobe/algorithm/transform.hpp>
 #include <adobe/algorithm/unique.hpp>
 #include <adobe/any_regular.hpp>
-#include <adobe/array.hpp>
 #include <adobe/dictionary.hpp>
 #include <adobe/name.hpp>
 
@@ -764,11 +762,12 @@ void sheet_t::implementation_t::add_interface(name_t name, bool linked,
     scope_value_t<bool> scope(initialize_mode_m, true);
 
     if (initializer_expression.size()) {
-        cell_set_m.push_back(cell_t(name, linked,
-                                    [position1, initializer_expression, this]() {
-                                        return calculate_expression(position1, initializer_expression);
-                                    },
-                                    cell_set_m.size()));
+        cell_set_m.push_back(cell_t(
+            name, linked,
+            [position1, initializer_expression, this]() {
+                return calculate_expression(position1, initializer_expression);
+            },
+            cell_set_m.size()));
     } else {
         cell_set_m.push_back(cell_t(name, linked, cell_t::calculator_t(), cell_set_m.size()));
     }
@@ -781,15 +780,14 @@ void sheet_t::implementation_t::add_interface(name_t name, bool linked,
 
     if (expression.size()) {
         // REVISIT (sparent) : Non-transactional on failure.
-        cell_set_m.push_back(cell_t(access_interface_output, name,
-                                    [position2, expression, this]() {
-                                        return calculate_expression(position2, expression);
-                                    },
-                                    cell_set_m.size(), &cell_set_m.back()));
+        cell_set_m.push_back(cell_t(
+            access_interface_output, name,
+            [position2, expression, this]() { return calculate_expression(position2, expression); },
+            cell_set_m.size(), &cell_set_m.back()));
     } else {
-        cell_set_m.push_back(cell_t(access_interface_output, name,
-                                    [name, this]() { return get(name); },
-                                    cell_set_m.size(), &cell_set_m.back()));
+        cell_set_m.push_back(cell_t(
+            access_interface_output, name, [name, this]() { return get(name); }, cell_set_m.size(),
+            &cell_set_m.back()));
     }
     output_index_m.insert(cell_set_m.back());
 
@@ -811,9 +809,9 @@ void sheet_t::implementation_t::add_interface(name_t name, any_regular_t initial
     cell.state_m = std::move(initial);
     cell.priority_m = ++priority_high_m;
 
-    cell_set_m.push_back(cell_t(access_interface_output, name,
-                                [name, this]() { return get(name); },
-                                cell_set_m.size(), &cell));
+    cell_set_m.push_back(cell_t(
+        access_interface_output, name, [name, this]() { return get(name); }, cell_set_m.size(),
+        &cell));
 
     output_index_m.insert(cell_set_m.back());
 
@@ -955,10 +953,10 @@ sheet_t::connection_t sheet_t::implementation_t::monitor_enabled(name_t n, const
     monitor(active_m.test(iter->cell_set_pos_m) || (value_accessed_m.test(iter->cell_set_pos_m) &&
                                                     (touch_set & priority_accessed_m).any()));
 
-    return monitor_enabled_m.connect(
-        [touch_set, iter_pos = iter->cell_set_pos_m, monitor, this](const cell_bits_t& a, const cell_bits_t& b) {
-            enabled_filter(touch_set, iter_pos, monitor, a, b);
-        });
+    return monitor_enabled_m.connect([touch_set, iter_pos = iter->cell_set_pos_m, monitor,
+                                      this](const cell_bits_t& a, const cell_bits_t& b) {
+        enabled_filter(touch_set, iter_pos, monitor, a, b);
+    });
 }
 
 /**************************************************************************************************/

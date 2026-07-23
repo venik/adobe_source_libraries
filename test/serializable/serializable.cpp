@@ -7,7 +7,7 @@
 
 #include <cmath>
 
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 #include <adobe/array.hpp>
 #include <adobe/dictionary.hpp>

@@ -11,14 +11,10 @@
 #define BOOST_TEST_MAIN
 
 // boost
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 // asl
-#include <adobe/algorithm/copy.hpp>
-#include <adobe/algorithm/minmax.hpp>
-#include <adobe/algorithm/sort.hpp>
 #include <adobe/sha.hpp>
-#include <adobe/string.hpp>
 #include <adobe/timer.hpp>
 
 /**************************************************************************************************/
@@ -296,8 +292,7 @@ BOOST_AUTO_TEST_CASE(sha) {
          "\x49\x9c\xbd\x7c\x88\x7a\x94\xea\xaa\x10\x1e\xa5\xaa\xbc\x52\x9b\x4e\x7e\x43\x66\x5a\x5a"
          "\xf2\xcd\x03\xfe\x67\x8e\xa6\xa5\x00\x5b\xba\x3b\x08\x22\x04\xc2\x8b\x91\x09\xf4\x69\xda"
          "\xc9\x2a\xaa\xb3\xaa\x7c\x11\xa1\xb3\x2a\xe0",
-         611, "8c5b2a5d dae5a97f c7f9d856 61c672ad bf7933d4"}
-    };
+         611, "8c5b2a5d dae5a97f c7f9d856 61c672ad bf7933d4"}};
 
     test_hash<adobe::sha1_t>(sha1_test_set);
 
@@ -317,8 +312,7 @@ BOOST_AUTO_TEST_CASE(sha) {
          "\x11\x6c\xd4\xa4\xc9\x87\xfc\x06\x57\x00\x64\x91\xb1\x49\xcc\xd4\xb5\x11\x30\xac\x62\xb1"
          "\x9d\xc2\x48\xc7\x44\x54\x3d\x20\xcd\x39\x52\xdc\xed\x1f\x06\xcc\x3b\x18\xb9\x1f\x3f\x55"
          "\x63\x3e\xcc\x30\x85\xf4\x90\x70\x60\xd2\xe0",
-         611, "54bea6ea b8195a2e b0a7906a 4b4a8766 66300eef bd1f3b84 74f9cd57"}
-    };
+         611, "54bea6ea b8195a2e b0a7906a 4b4a8766 66300eef bd1f3b84 74f9cd57"}};
 
     test_hash<adobe::sha224_t>(sha224_test_set);
 
@@ -338,44 +332,40 @@ BOOST_AUTO_TEST_CASE(sha) {
          "\x58\xa3\xe2\xf3\xc0\x07\x16\x6e\x49\xc1\x2e\x9b\xa3\x4c\x01\x04\x06\x91\x29\xea\x76\x15"
          "\x64\x25\x45\x70\x3a\x2b\xd9\x01\xe1\x6e\xb0\xe0\x5d\xeb\xa0\x14\xeb\xff\x64\x06\xa0\x7d"
          "\x54\x36\x4e\xff\x74\x2d\xa7\x79\xb0\xb3\xa0",
-         611, "3e9ad646 8bbbad2a c3c2cdc2 92e018ba 5fd70b96 0cf16797 77fce708 fdb066e9"}
-    };
+         611, "3e9ad646 8bbbad2a c3c2cdc2 92e018ba 5fd70b96 0cf16797 77fce708 fdb066e9"}};
 
     test_hash<adobe::sha256_t>(sha256_test_set);
 
     /************************** SHA-384 Unit Tests **************************/
 
-    std::vector<unit_test_t> sha384_test_set {
+    std::vector<unit_test_t> sha384_test_set{
         {"abc", "cb00753f45a35e8b b5a03d699ac65007 272c32ab0eded163 1a8b605a43ff5bed "
                 "8086072ba1e7cc23 58baeca134c825a7"},
-            {"abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmnoijklmnopjklmnopqklmno"
-             "pq"
-             "rlmnopqrsmnopqrstnopqrstu",
-             "09330c33f71147e8 3d192fc782cd1b47 53111b173b3b05d2 2fa08086e3b0f712 fcc7c71a557e2db9 "
-             "66c3e9fa91746039"},
+        {"abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmnoijklmnopjklmnopqklmno"
+         "pq"
+         "rlmnopqrsmnopqrstnopqrstu",
+         "09330c33f71147e8 3d192fc782cd1b47 53111b173b3b05d2 2fa08086e3b0f712 fcc7c71a557e2db9 "
+         "66c3e9fa91746039"},
 #if ADOBE_TEST_SHA_MILLION_A_STRING
-            {million_a_k, "9d0e1809716474cb 086e834e310a4a1c ed149e9c00f24852 7972cec5704c2a5b "
-                          "07b8b3dc38ecc4eb ae97ddd87f3d8985"},
+        {million_a_k, "9d0e1809716474cb 086e834e310a4a1c ed149e9c00f24852 7972cec5704c2a5b "
+                      "07b8b3dc38ecc4eb ae97ddd87f3d8985"},
 #endif
-            {"\x10", 5,
-             "8d17be79e32b6718 e07d8a603eb84ba0 478f7fcfd1bb9399 5f7d1149e09143ac "
-             "1ffcfc56820e469f 3878d957a15a3fe4"},
-            {"\x8b\xc5\x00\xc7\x7c\xee\xd9\x87\x9d\xa9\x89\x10\x7c\xe0\xaa\xa0", 123,
-             "d8c43b38e12e7c42 a7c9b810299fd6a7 70bef30920f17532 a898de62c7a07e42 93449c0b5fa70109 "
-             "f0783211cfc4bce3"},
-        {
-            "\x68\xf5\x01\x79\x2d\xea\x97\x96\x76\x70\x22\xd9\x3d\xa7\x16\x79\x30\x99\x20\xfa\x10"
-            "\x12\xae\xa3\x57\xb2\xb1\x33\x1d\x40\xa1\xd0\x3c\x41\xc2\x40\xb3\xc9\xa7\x5b\x48\x92"
-            "\xf4\xc0\x72\x4b\x68\xc8\x75\x32\x1a\xb8\xcf\xe5\x02\x3b\xd3\x75\xbc\x0f\x94\xbd\x89"
-            "\xfe\x04\xf2\x97\x10\x5d\x7b\x82\xff\xc0\x02\x1a\xeb\x1c\xcb\x67\x4f\x52\x44\xea\x34"
-            "\x97\xde\x26\xa4\x19\x1c\x5f\x62\xe5\xe9\xa2\xd8\x08\x2f\x05\x51\xf4\xa5\x30\x68\x26"
-            "\xe9\x1c\xc0\x06\xce\x1b\xf6\x0f\xf7\x19\xd4\x2f\xa5\x21\xc8\x71\xcd\x23\x94\xd9\x6e"
-            "\xf4\x46\x8f\x21\x96\x6b\x41\xf2\xba\x80\xc2\x6e\x83\xa9\xe0",
-                1123,
-                "5860e8de91c21578 bb4174d227898a98 e0b45c4c760f0095 49495614daedc077 "
-                "5d92d11d9f8ce9b0 64eeac8dafc3a297"
-        }
-    };
+        {"\x10", 5,
+         "8d17be79e32b6718 e07d8a603eb84ba0 478f7fcfd1bb9399 5f7d1149e09143ac "
+         "1ffcfc56820e469f 3878d957a15a3fe4"},
+        {"\x8b\xc5\x00\xc7\x7c\xee\xd9\x87\x9d\xa9\x89\x10\x7c\xe0\xaa\xa0", 123,
+         "d8c43b38e12e7c42 a7c9b810299fd6a7 70bef30920f17532 a898de62c7a07e42 93449c0b5fa70109 "
+         "f0783211cfc4bce3"},
+        {"\x68\xf5\x01\x79\x2d\xea\x97\x96\x76\x70\x22\xd9\x3d\xa7\x16\x79\x30\x99\x20\xfa\x10"
+         "\x12\xae\xa3\x57\xb2\xb1\x33\x1d\x40\xa1\xd0\x3c\x41\xc2\x40\xb3\xc9\xa7\x5b\x48\x92"
+         "\xf4\xc0\x72\x4b\x68\xc8\x75\x32\x1a\xb8\xcf\xe5\x02\x3b\xd3\x75\xbc\x0f\x94\xbd\x89"
+         "\xfe\x04\xf2\x97\x10\x5d\x7b\x82\xff\xc0\x02\x1a\xeb\x1c\xcb\x67\x4f\x52\x44\xea\x34"
+         "\x97\xde\x26\xa4\x19\x1c\x5f\x62\xe5\xe9\xa2\xd8\x08\x2f\x05\x51\xf4\xa5\x30\x68\x26"
+         "\xe9\x1c\xc0\x06\xce\x1b\xf6\x0f\xf7\x19\xd4\x2f\xa5\x21\xc8\x71\xcd\x23\x94\xd9\x6e"
+         "\xf4\x46\x8f\x21\x96\x6b\x41\xf2\xba\x80\xc2\x6e\x83\xa9\xe0",
+         1123,
+         "5860e8de91c21578 bb4174d227898a98 e0b45c4c760f0095 49495614daedc077 "
+         "5d92d11d9f8ce9b0 64eeac8dafc3a297"}};
 
     test_hash<adobe::sha384_t>(sha384_test_set);
 
@@ -407,8 +397,7 @@ BOOST_AUTO_TEST_CASE(sha) {
          "\xc9\x04\x3b\x93\x84\xf5\x49\x06\x80",
          1123,
          "32ba76fc30eaa020 8aeb50ffb5af1864 fdbf17902a4dc0a6 82c61fcea6d92b78 "
-         "3267b21080301837 f59de79c6b337db2 526f8a0a510e5e53 cafed4355fe7c2f1"}
-    };
+         "3267b21080301837 f59de79c6b337db2 526f8a0a510e5e53 cafed4355fe7c2f1"}};
 
     test_hash<adobe::sha512_t>(sha512_test_set);
 }

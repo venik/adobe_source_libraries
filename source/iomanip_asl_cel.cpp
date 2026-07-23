@@ -15,7 +15,6 @@
 #include <adobe/dictionary.hpp>
 #include <adobe/implementation/expression_filter.hpp>
 #include <adobe/iomanip_asl_cel.hpp>
-#include <adobe/typeinfo.hpp>
 
 using namespace std;
 

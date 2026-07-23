@@ -7,21 +7,20 @@
 
 #include <adobe/implementation/adam_parser_impl.hpp>
 
+
 #include <cassert>
 #include <functional>
-#include <iomanip>
 #include <istream>
 #include <sstream>
-#include <utility>
-#include <adobe/algorithm/binary_search.hpp>
-#include <adobe/algorithm/lower_bound.hpp>
-#include <adobe/algorithm/sort.hpp>
-#include <adobe/algorithm/sorted.hpp>
 
-#include <adobe/any_regular.hpp>
+#include <adobe/algorithm/binary_search.hpp>
 #include <adobe/array.hpp>
-#include <adobe/dictionary.hpp>
 #include <adobe/name.hpp>
+
+
+#ifndef NDEBUG
+#include <adobe/algorithm/sorted.hpp>
+#endif
 
 #include <adobe/implementation/token.hpp>
 

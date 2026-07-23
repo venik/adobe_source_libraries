@@ -10,7 +10,9 @@
 
 #include <adobe/cmath.hpp>
 
-#include <adobe/algorithm.hpp>
+#include <adobe/algorithm/equal.hpp>
+#include <adobe/algorithm/transform.hpp>
+
 
 /**************************************************************************************************/
 

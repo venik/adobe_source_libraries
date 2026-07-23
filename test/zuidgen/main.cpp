@@ -5,12 +5,15 @@
 */
 /**************************************************************************************************/
 
-#include <adobe/algorithm.hpp>
 #include <adobe/config.hpp>
+
+#include <adobe/algorithm/sort.hpp>
 #include <adobe/zuid.hpp>
 
+#include <cassert>
 #include <iostream>
 #include <vector>
+
 
 /**************************************************************************************************/
 

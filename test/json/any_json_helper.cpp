@@ -15,10 +15,9 @@
 #define BOOST_TEST_MAIN
 
 // boost
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 // asl
-#include <adobe/algorithm/for_each.hpp>
 #include <adobe/algorithm/lower_bound.hpp>
 #include <adobe/algorithm/sort.hpp>
 #include <adobe/json.hpp>

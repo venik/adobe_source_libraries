@@ -8,7 +8,7 @@
 #ifndef ADOBE_ENUM_OPS_HPP
 #define ADOBE_ENUM_OPS_HPP
 
-#include <stlab/enum_ops.hpp>
+#include <stlab/enum_ops.hpp> // IWYU pragma: export
 
 /**************************************************************************************************/
 

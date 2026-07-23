@@ -7,12 +7,13 @@
 /******************************************************************************/
 
 // stdc++
+#include <array>
 #include <cfloat>
 #include <charconv>
 #include <cmath>
 #include <iostream>
 #include <limits>
-#include <array>
+
 
 #define BOOST_TEST_MAIN
 
@@ -21,13 +22,12 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunneeded-internal-declaration"
 #endif
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif
 
 // asl
-#include <adobe/algorithm/for_each.hpp>
 #include <adobe/any_regular.hpp>
 #include <adobe/string/to_string.hpp>
 

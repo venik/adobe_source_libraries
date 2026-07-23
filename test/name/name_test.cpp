@@ -5,8 +5,6 @@
 */
 /**************************************************************************************************/
 
-#include <adobe/config.hpp>
-
 #include <functional>
 #include <type_traits>
 
@@ -14,7 +12,7 @@
 #include <adobe/test/check_less_than_comparable.hpp>
 #include <adobe/test/check_null.hpp>
 #include <adobe/test/check_regular.hpp>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 #include <adobe/name.hpp>
 

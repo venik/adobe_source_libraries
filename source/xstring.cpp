@@ -13,8 +13,6 @@
 
 #include <adobe/algorithm/find.hpp>
 #include <adobe/algorithm/find_match.hpp>
-#include <adobe/algorithm/minmax.hpp>
-#include <adobe/dictionary.hpp>
 #include <adobe/implementation/string_pool.hpp>
 #include <adobe/istream.hpp>
 #include <adobe/name.hpp>

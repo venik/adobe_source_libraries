@@ -5,11 +5,9 @@
 */
 /**************************************************************************************************/
 
-#include <adobe/config.hpp>
-
 #define BOOST_TEST_MAIN
 
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 #include <adobe/enum_ops.hpp>
 

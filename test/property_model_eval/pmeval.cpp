@@ -9,12 +9,16 @@
 
 #include <filesystem>
 #include <fstream>
-#include <iterator>
+#include <iostream>
 
-#include <boost/program_options.hpp>
+// #include <boost/program_options.hpp>
 
-#include <adobe/adam.hpp>
-#include <adobe/dictionary.hpp>
+#include <boost/program_options/options_description.hpp>
+#include <boost/program_options/parsers.hpp>
+#include <boost/program_options/positional_options.hpp>
+#include <boost/program_options/variables_map.hpp>
+
+#include <adobe/istream.hpp>
 #include <adobe/unicode.hpp>
 
 #include "adam_test_parser.hpp"

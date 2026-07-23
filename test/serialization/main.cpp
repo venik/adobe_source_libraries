@@ -14,7 +14,6 @@
 #include <adobe/iomanip_pdf.hpp>
 #include <adobe/iomanip_xml.hpp>
 #include <adobe/name.hpp>
-#include <adobe/string.hpp>
 
 struct unknown_type_t {};
 
