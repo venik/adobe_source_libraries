@@ -6,7 +6,7 @@
 /**************************************************************************************************/
 
 #define BOOST_TEST_MAIN
-#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner) // NOLINT(misc-include-cleaner)
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 #include <adobe/conversion.hpp>
 

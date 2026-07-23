@@ -9,7 +9,7 @@
 
 #define BOOST_TEST_MAIN
 
-#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner) // NOLINT(misc-include-cleaner)
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 BOOST_AUTO_TEST_CASE(median_test) {
     using adobe::median;

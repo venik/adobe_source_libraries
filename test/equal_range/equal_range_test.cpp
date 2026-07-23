@@ -8,7 +8,7 @@
 #include <utility>
 
 #define BOOST_TEST_MAIN
-#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner) // NOLINT(misc-include-cleaner)
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 #include <adobe/algorithm/equal_range.hpp>
 #include <adobe/utility/pair.hpp>

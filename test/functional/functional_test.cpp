@@ -10,7 +10,7 @@
 #define BOOST_TEST_MAIN
 
 // boost
-#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner) // NOLINT(misc-include-cleaner)
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 /**************************************************************************************************/
 
