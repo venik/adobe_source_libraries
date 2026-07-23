@@ -87,44 +87,40 @@ option(BUILD_DOCS "Build documentation" OFF)
 if(BUILD_DOCS)
     find_package(Doxygen REQUIRED)
 
-    if(DOXYGEN_FOUND)
-        # Download doxygen-awesome-css theme via CPM
-        # https://github.com/jothepro/doxygen-awesome-css
-        CPMAddPackage(
-            URI gh:jothepro/doxygen-awesome-css@2.4.1
-            DOWNLOAD_ONLY YES
-        )
-        set(AWESOME_CSS_DIR ${doxygen-awesome-css_SOURCE_DIR})
+    # Download doxygen-awesome-css theme via CPM
+    # https://github.com/jothepro/doxygen-awesome-css
+    CPMAddPackage(
+        URI gh:jothepro/doxygen-awesome-css@2.4.2
+        DOWNLOAD_ONLY YES
+    )
+    set(AWESOME_CSS_DIR ${doxygen-awesome-css_SOURCE_DIR})
 
-        # Configure Doxyfile
-        set(DOXYFILE_IN ${CMAKE_CURRENT_SOURCE_DIR}/documentation/doxyfile.in)
-        set(DOXYFILE_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+    # Configure Doxyfile
+    set(DOXYFILE_IN ${CMAKE_CURRENT_SOURCE_DIR}/documentation/doxyfile.in)
+    set(DOXYFILE_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
 
-        # Set variables for Doxyfile template
-        set(PROJECT_NAME "Adobe Source Libraries")
-        set(PROJECT_BRIEF "A collection of C++ libraries.")
-        set(PROJECT_VERSION ${PROJECT_VERSION})
-        set(INPUT_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-        set(OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}")
-        set(AWESOME_CSS_PATH "${AWESOME_CSS_DIR}")
-        set(CMAKE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+    # Set variables for Doxyfile template
+    set(PROJECT_NAME "Adobe Source Libraries")
+    set(PROJECT_BRIEF "A collection of C++ libraries.")
+    set(PROJECT_VERSION ${PROJECT_VERSION})
+    set(INPUT_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+    set(OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}")
+    set(AWESOME_CSS_PATH "${AWESOME_CSS_DIR}")
+    set(CMAKE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 
-        configure_file(${DOXYFILE_IN} ${DOXYFILE_OUT} @ONLY)
+    configure_file(${DOXYFILE_IN} ${DOXYFILE_OUT} @ONLY)
 
-        # Add custom target for documentation
-        add_custom_target(docs
-            COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYFILE_OUT}
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-            COMMENT "Generating API documentation with Doxygen"
-            VERBATIM
-        )
+    # Add custom target for documentation
+    add_custom_target(docs
+        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYFILE_OUT}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+        COMMENT "Generating API documentation with Doxygen"
+        VERBATIM
+    )
 
-        # Ensure the output directory exists
-        file(MAKE_DIRECTORY ${OUTPUT_DIR})
+    # Ensure the output directory exists
+    file(MAKE_DIRECTORY ${OUTPUT_DIR})
 
-        message(STATUS "Documentation target 'docs' configured")
-        message(STATUS "Run 'cmake --build . --target docs' to generate documentation")
-    else()
-        message(WARNING "Doxygen not found. Documentation will not be built.")
-    endif()
+    message(STATUS "Documentation target 'docs' configured")
+    message(STATUS "Run 'cmake --build . --target docs' to generate documentation")
 endif()

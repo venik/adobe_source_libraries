@@ -3,14 +3,10 @@
     Distributed under the Boost Software License - Version 1.0 (see the accompanying file LICENSE
     or a copy at https://stlab.github.io/adobe_source_libraries/licenses.html)
 */
-// $Id: $
-// $DateTime: $
-// $Change: $
-// $Author: $
 
 /**************************************************************************************************/
 
-#include <filesystem>
+#include <algorithm>
 #include <iomanip>
 #include <ostream>
 #include <sstream>
