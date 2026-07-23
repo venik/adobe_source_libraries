@@ -247,11 +247,6 @@ adobe::any_regular_t scale_function(const adobe::any_regular_t& arg) {
         adobe::make_string("function \'", function_name.c_str(), "\' not defined."));
 }
 
-[[noreturn]] void throw_variable_not_defined(adobe::name_t variable_name) {
-    throw std::logic_error(
-        adobe::make_string("variable \'", variable_name.c_str(), "\' not defined."));
-}
-
 /**************************************************************************************************/
 
 #if 0

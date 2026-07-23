@@ -8,12 +8,9 @@
 #ifndef ADOBE_ALGORITHM_FILTER_HPP
 #define ADOBE_ALGORITHM_FILTER_HPP
 
-#include <adobe/config.hpp>
-
 #include <boost/range/begin.hpp>
 #include <boost/range/end.hpp>
 
-#include <algorithm>
 #include <functional>
 
 /**************************************************************************************************/
@@ -25,7 +22,9 @@ namespace adobe {
 \defgroup filter filter
 \ingroup mutating_algorithm
 
-Filter is similar to \c std::tranform. The \c op function is passed an instance of an [output_iterator](https://www.boost.org/sgi/stl/output_iterator.html) and can generate more than (or fewer than) a single result.
+Filter is similar to \c std::transform. The \c op function is passed an instance of an
+[output_iterator](https://www.boost.org/sgi/stl/output_iterator.html) and can generate more than (or
+fewer than) a single result.
 
 The \c op function is called once for each item in the range <code>[first, last)</code>. The \c
 result parameter is passed into the first call to \c op, the result of \c op is passed to subsequent

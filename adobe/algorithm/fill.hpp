@@ -8,12 +8,8 @@
 #ifndef ADOBE_ALGORITHM_FILL_HPP
 #define ADOBE_ALGORITHM_FILL_HPP
 
-#include <adobe/config.hpp>
-
 #include <boost/range/begin.hpp>
 #include <boost/range/end.hpp>
-
-#include <algorithm>
 
 /**************************************************************************************************/
 

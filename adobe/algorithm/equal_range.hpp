@@ -233,8 +233,8 @@ equal_range(I& r, const T& x) {
 template <typename I, // I models ForwardRange
           typename T> // T == result_type(P)
 inline std::pair<typename boost::range_const_iterator<I>::type,
-                 typename boost::range_const_iterator<I>::type>
-equal_range(const I& r, const T& x) {
+                 typename boost::range_const_iterator<I>::type> equal_range(const I& r,
+                                                                            const T& x) {
     return std::equal_range(boost::begin(r), boost::end(r), x);
 }
 

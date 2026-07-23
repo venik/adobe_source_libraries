@@ -8,10 +8,6 @@
 #ifndef ADOBE_ALGORITHM_EXISTS_HPP
 #define ADOBE_ALGORITHM_EXISTS_HPP
 
-#include <adobe/config.hpp>
-
-#include <algorithm>
-
 /**************************************************************************************************/
 
 namespace adobe {

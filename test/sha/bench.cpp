@@ -74,30 +74,6 @@ std::string digest_binary(const DigestType& digest) {
 
 /**************************************************************************************************/
 
-void print_binary_message(const std::string& str, std::size_t unit_size = 0) {
-    std::cout << std::hex;
-
-    std::size_t count(0);
-
-    for (std::string::const_iterator first(str.begin()), last(str.end()); first != last; ++first) {
-        int value(int(*first) & 0xff);
-
-        std::cout.width(2);
-        std::cout.fill('0');
-
-        std::cout << value;
-
-        if (++count == unit_size) {
-            std::cout << ' ';
-            count = 0;
-        }
-    }
-
-    std::cout << std::dec;
-}
-
-/**************************************************************************************************/
-
 template <typename Hash>
 std::vector<std::string> bench(const std::vector<std::string>& corpus, const char* timer_header,
                                Hash hash) {
@@ -364,47 +340,11 @@ std::vector<std::string> commoncrypto_bench_512(const std::vector<std::string>& 
 
 /**************************************************************************************************/
 
-void validate(const std::vector<std::string>& x, const std::vector<std::string>& y) {
-    if (x.size() != y.size())
-        throw std::runtime_error("Hash vector size mismatch");
-
-    for (std::size_t i(0); i < x.size(); ++i) {
-        if (x[i] == y[i])
-            continue;
-
-        std::cout << "    x: ";
-        print_binary_message(x[i]);
-        std::cout << '\n';
-
-        std::cout << "    y: ";
-        print_binary_message(y[i]);
-        std::cout << '\n';
-
-        throw std::runtime_error("Digest mismatch");
-    }
-}
-
-/**************************************************************************************************/
-
 } // namespace
 
 /**************************************************************************************************/
 
 int main() try {
-#if 0
-    std::vector<std::string> corpus;
-
-    for (std::size_t i(0); i < 4; ++i)
-    {
-        std::size_t sz((i + 1) * 1000000);
-
-        for (char c('a'); c < 'z'; ++c)
-            corpus.emplace_back(sz, c);
-
-        for (char c('0'); c < '9'; ++c)
-            corpus.emplace_back(sz, c);
-    }
-#else
     const std::size_t factor(1000000);
     std::size_t n1(1);
     std::size_t n2(1);
@@ -422,7 +362,6 @@ int main() try {
         n1 = n2;
         n2 = n;
     }
-#endif
 
     std::cout << "SHA-1:\n";
     std::vector<std::string> asl_result_1(asl_bench_1(corpus));

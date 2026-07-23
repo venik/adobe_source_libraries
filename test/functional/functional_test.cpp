@@ -7,8 +7,6 @@
 
 #include <adobe/functional.hpp> // file be tested included first
 
-#include <adobe/enum_ops.hpp>
-
 #define BOOST_TEST_MAIN
 
 // boost
@@ -21,16 +19,24 @@ using namespace adobe;
 
 namespace {
 
-/// An enumeration of member function qualifiers as bit fields to identify or mask an overload.
+/*
+    REVISIT(sean-parent) : 2026-07-23. enum-ops don't work within a template argument in VC++. To
+    avoid casting we define the values we need directly within the enum.
+*/
+
+/// An enumeration of member function qualifiers as bit fields to identify or mask an
+/// overload.
 enum member_function_qualifiers {
     _none = 0,
     _const_lvalue = 1 << 0,
     _lvalue = 1 << 1,
     _rvalue = 1 << 2,
-    _all = _const_lvalue | _lvalue | _rvalue
+    _all = _const_lvalue | _lvalue | _rvalue,
+    _all_xor_lvalue = _all ^ _lvalue,
+    _all_xor_const_lvalue = _all ^ _const_lvalue,
+    _all_xor_rvalue = _all ^ _rvalue
 };
 
-auto adobe_enable_bitmask_enum(member_function_qualifiers) -> std::true_type;
 
 /// An overload of a binary function that returns a tuple of its arguments and the qualifiers used.
 /// Only the members specified by the noexcept_qualifier mask are noexcept.
@@ -49,11 +55,6 @@ struct test_binary_function {
 
 } // namespace
 
-/*
-    REVISIT(sean-parent) : The static casts are necessary to get this code to compile on VC++14.
-    It is unclear why the compiler is unable to find the enum operators.
-*/
-
 
 BOOST_AUTO_TEST_CASE(functional_transpose) {
 
@@ -61,10 +62,8 @@ BOOST_AUTO_TEST_CASE(functional_transpose) {
     // function. It also tests that the correct overload is selected and that the noexcept
     // qualifier is correctly propagated.
 
-    transpose lvalue{
-        test_binary_function<static_cast<member_function_qualifiers>(_all ^ _lvalue)>{}};
-    const transpose const_lvalue{
-        test_binary_function<static_cast<member_function_qualifiers>(_all ^ _const_lvalue)>{}};
+    transpose lvalue{test_binary_function<_all_xor_lvalue>{}};
+    const transpose const_lvalue{test_binary_function<_all_xor_const_lvalue>{}};
     transpose lvalue_noexcept{test_binary_function<_lvalue>{}};
     const transpose const_lvalue_noexcept{test_binary_function<_const_lvalue>{}};
 
@@ -80,11 +79,8 @@ BOOST_AUTO_TEST_CASE(functional_transpose) {
     BOOST_TEST((const_lvalue_noexcept(1, 2) == tuple(2, 1, _const_lvalue)));
     BOOST_TEST(noexcept(const_lvalue_noexcept(1, 2)));
 
-    BOOST_TEST(
-        (transpose(test_binary_function<static_cast<member_function_qualifiers>(_all ^ _rvalue)>{})(
-             1, 2) == tuple(2, 1, _rvalue)));
-    BOOST_TEST(!noexcept(transpose(
-        test_binary_function<static_cast<member_function_qualifiers>(_all ^ _rvalue)>{})(1, 2)));
+    BOOST_TEST((transpose(test_binary_function<_all_xor_rvalue>{})(1, 2) == tuple(2, 1, _rvalue)));
+    BOOST_TEST(!noexcept(transpose(test_binary_function<_all_xor_rvalue>{})(1, 2)));
 
     BOOST_TEST((transpose(test_binary_function<_rvalue>{})(1, 2) == tuple(2, 1, _rvalue)));
     BOOST_TEST(noexcept(transpose(test_binary_function<_rvalue>{})(1, 2)));
