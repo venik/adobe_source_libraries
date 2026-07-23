@@ -12,7 +12,7 @@
 #include <cmath>
 #include <iostream>
 #include <limits>
-#include <vector>
+#include <array>
 
 #define BOOST_TEST_MAIN
 

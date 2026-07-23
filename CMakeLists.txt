@@ -2,11 +2,12 @@ cmake_minimum_required(VERSION 3.29)
 include(cmake/CPM.cmake)
 
 # Add cpp-library for set version
+# [DEPENDENCY] https://github.com/stlab/cpp-library
 # CPMAddPackage(
 #     NAME cpp-library
 #     SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../cpp-library"
 # )
-CPMAddPackage("gh:stlab/cpp-library@5.2.0")
+CPMAddPackage("gh:stlab/cpp-library@5.4.1")
 include(${cpp-library_SOURCE_DIR}/cpp-library.cmake)
 
 project(adobe-source-libraries CXX)
@@ -18,7 +19,7 @@ cpp_library_set_version()
 include(FindGit)
 include(CMakeParseArguments)
 
-if (PROJECT_IS_TOP_LEVEL)
+if(PROJECT_IS_TOP_LEVEL)
     include(CTest)
 endif()
 
@@ -30,7 +31,7 @@ endif()
 # Dependencies
 
 # https://github.com/stlab/copy-on-write/releases
-CPMAddPackage("gh:stlab/copy-on-write@1.1.0")
+CPMAddPackage("gh:stlab/copy-on-write@1.1.1")
 
 # https://github.com/stlab/enum-ops/releases
 CPMAddPackage(gh:stlab/enum-ops@1.2.0)
@@ -50,9 +51,9 @@ set(CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LIBRARY "libc++")
 # https://github.com/boostorg/boost/releases
 CPMAddPackage(
     NAME Boost
-    VERSION 1.90.0
-    URL https://github.com/boostorg/boost/releases/download/boost-1.90.0/boost-1.90.0-cmake.7z
-    URL_HASH SHA256=218e74c4aa362a994b7b7a23b2920f455a00205c656405fcf262cf60b8871921
+    VERSION 1.91.0-1
+    URL https://github.com/boostorg/boost/releases/download/boost-1.91.0-1/boost-1.91.0-1-cmake.7z
+    URL_HASH SHA256=29c7d4f4ac36ad853b6765d03571ea60d90286775df026b4efd9f3281131972b
     OPTIONS
     "BOOST_ENABLE_CMAKE ON"
     "CMAKE_CXX_CLANG_TIDY ;"
@@ -85,7 +86,7 @@ option(BUILD_DOCS "Build documentation" OFF)
 
 if(BUILD_DOCS)
     find_package(Doxygen REQUIRED)
-    
+
     if(DOXYGEN_FOUND)
         # Download doxygen-awesome-css theme via CPM
         # https://github.com/jothepro/doxygen-awesome-css
@@ -94,11 +95,11 @@ if(BUILD_DOCS)
             DOWNLOAD_ONLY YES
         )
         set(AWESOME_CSS_DIR ${doxygen-awesome-css_SOURCE_DIR})
-        
+
         # Configure Doxyfile
         set(DOXYFILE_IN ${CMAKE_CURRENT_SOURCE_DIR}/documentation/doxyfile.in)
         set(DOXYFILE_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
-        
+
         # Set variables for Doxyfile template
         set(PROJECT_NAME "Adobe Source Libraries")
         set(PROJECT_BRIEF "A collection of C++ libraries.")
@@ -107,9 +108,9 @@ if(BUILD_DOCS)
         set(OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}")
         set(AWESOME_CSS_PATH "${AWESOME_CSS_DIR}")
         set(CMAKE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-        
+
         configure_file(${DOXYFILE_IN} ${DOXYFILE_OUT} @ONLY)
-        
+
         # Add custom target for documentation
         add_custom_target(docs
             COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYFILE_OUT}
@@ -117,13 +118,13 @@ if(BUILD_DOCS)
             COMMENT "Generating API documentation with Doxygen"
             VERBATIM
         )
-        
+
         # Ensure the output directory exists
         file(MAKE_DIRECTORY ${OUTPUT_DIR})
-        
+
         message(STATUS "Documentation target 'docs' configured")
         message(STATUS "Run 'cmake --build . --target docs' to generate documentation")
     else()
         message(WARNING "Doxygen not found. Documentation will not be built.")
     endif()
-endif() 
+endif()

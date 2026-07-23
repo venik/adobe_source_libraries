@@ -23,7 +23,6 @@
 
 // asl
 #include <adobe/conversion.hpp>
-#include <adobe/fnv.hpp>
 
 /**
     \defgroup name name_t and static_name_t
