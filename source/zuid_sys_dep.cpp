@@ -17,6 +17,9 @@
 #include <adobe/implementation/zuid_sys_dep.hpp>
 #include <adobe/once.hpp>
 
+#if ADOBE_PLATFORM_WIN
+#include <windows.h> // NOLINT(misc-include-cleaner)
+#endif
 
 #if defined(BOOST_MSVC)
 #pragma warning(push)
