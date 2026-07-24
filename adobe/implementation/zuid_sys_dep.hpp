@@ -41,7 +41,6 @@
 
 #include <array>
 #include <cstdint>
-#include <ctime>
 
 #include <adobe/md5.hpp>
 
