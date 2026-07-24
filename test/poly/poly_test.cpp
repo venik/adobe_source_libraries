@@ -6,14 +6,12 @@
 
 /**************************************************************************************************/
 
-#include <adobe/config.hpp>
-
 #define BOOST_TEST_MAIN
 
 #include <cstdlib>
 #include <string>
 
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 #include <adobe/poly_copyable.hpp>
 #include <adobe/poly_regular.hpp>

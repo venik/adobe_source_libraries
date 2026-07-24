@@ -13,7 +13,7 @@
 #define BOOST_TEST_MAIN
 
 // boost
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 // asl
 #include <adobe/fnv.hpp>

@@ -12,7 +12,7 @@
 
 #include <adobe/config.hpp>
 
-#include <adobe/dictionary_fwd.hpp>
+#include <adobe/dictionary_fwd.hpp> // IWYU pragma: export
 
 #include <stdexcept>
 

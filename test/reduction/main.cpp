@@ -5,11 +5,13 @@
 */
 /**************************************************************************************************/
 
-#include <adobe/algorithm.hpp>
+#include <adobe/algorithm/copy.hpp>
+#include <adobe/algorithm/iota.hpp>
 #include <adobe/algorithm/other_of.hpp>
 #include <adobe/algorithm/reduce.hpp>
 #include <adobe/algorithm/rotate.hpp>
 #include <adobe/iterator/value_iterator.hpp>
+
 
 #include <boost/next_prior.hpp>
 

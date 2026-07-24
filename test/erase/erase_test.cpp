@@ -11,7 +11,6 @@
 
 #include <deque>
 #include <functional>
-#include <iostream>
 #include <list>
 #include <map>
 #include <set>
@@ -20,15 +19,13 @@
 #include <boost/mpl/list.hpp>
 #include <boost/range/begin.hpp>
 #include <boost/range/end.hpp>
-#include <boost/range/size.hpp>
-#include <boost/test/results_collector.hpp>
-#include <boost/test/unit_test.hpp>
-#include <boost/test/utils/nullstream.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 #include <adobe/algorithm/erase_if.hpp>
 #include <adobe/algorithm/find.hpp>
-#include <adobe/functional.hpp>
-#include <adobe/utility/pair.hpp>
+#include <adobe/functional/operator.hpp>
+
+
 
 /**************************************************************************************************/
 

@@ -7,7 +7,7 @@
 
 #include <adobe/config.hpp>
 #include <adobe/utility/ignore_unused.hpp>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 
 namespace adobe {

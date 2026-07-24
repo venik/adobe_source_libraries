@@ -10,13 +10,13 @@
 
 #include <adobe/config.hpp>
 
+#include <adobe/algorithm/find.hpp>
 #include <adobe/algorithm/identity_element.hpp>
 #include <adobe/algorithm/other_of.hpp>
 #include <adobe/functional.hpp>
 #include <adobe/iterator/type_functions.hpp>
 
-#include <algorithm>
-#include <functional>
+#include <iterator>
 #include <vector>
 
 /**************************************************************************************************/

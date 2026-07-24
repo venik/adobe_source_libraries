@@ -6,27 +6,21 @@
 /**************************************************************************************************/
 
 #include <algorithm>
-#include <cmath>
 #include <functional>
-#include <iostream>
 #include <map>
 #include <mutex>
-#include <numeric>
 #include <typeinfo>
 #include <vector>
 
 #include <adobe/algorithm/minmax.hpp>
 #include <adobe/any_regular.hpp>
-#include <adobe/array.hpp>
 #include <adobe/cmath.hpp>
 #include <adobe/dictionary.hpp>
 #include <adobe/empty.hpp>
-#include <adobe/functional.hpp>
 #include <adobe/implementation/expression_filter.hpp>
 #include <adobe/implementation/token.hpp>
 #include <adobe/localization.hpp>
 #include <adobe/name.hpp>
-#include <adobe/once.hpp>
 #include <adobe/static_table.hpp>
 #include <adobe/string.hpp>
 #include <adobe/virtual_machine.hpp>
@@ -251,11 +245,6 @@ adobe::any_regular_t scale_function(const adobe::any_regular_t& arg) {
 [[noreturn]] void throw_function_not_defined(adobe::name_t function_name) {
     throw std::logic_error(
         adobe::make_string("function \'", function_name.c_str(), "\' not defined."));
-}
-
-[[noreturn]] void throw_variable_not_defined(adobe::name_t variable_name) {
-    throw std::logic_error(
-        adobe::make_string("variable \'", variable_name.c_str(), "\' not defined."));
 }
 
 /**************************************************************************************************/

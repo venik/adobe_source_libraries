@@ -32,6 +32,7 @@ namespace adobe {
     - [STL documentation for find_if](https://www.boost.org/sgi/stl/find_if.html)
     - [STL documentation for find_end](https://www.boost.org/sgi/stl/find_end.html)
     - [STL documentation for find_first_of](https://www.boost.org/sgi/stl/find_first_of.html)
+        - find_first_of is a quadratic algorithm. Use find_if with is_member instead.
     - [STL documentation for adjacent_find](https://www.boost.org/sgi/stl/adjacent_find.html)
 */
 
@@ -275,80 +276,6 @@ find_end(const ForwardRange1& range1, const ForwardRange2& range2, BinaryPredica
     return adobe::find_end(boost::begin(range1), boost::end(range1), boost::begin(range2),
                            boost::end(range2), comp);
 }
-
-#if 0
-
-// find_first_of is a bad algorithm. Use find_first_of_set until we provide a better predicate.
-
-/*!
-    \ingroup find
-
-    \brief find implementation
-*/
-template <class InputRange, class ForwardRange>
-inline typename boost::range_iterator<InputRange>::type
-find_first_of(InputRange& range1, const ForwardRange& range2)
-{
-    return std::find_first_of(boost::begin(range1), boost::end(range1),
-                              boost::begin(range2), boost::end(range2));
-}
-
-/*!
-    \ingroup find
-
-    \brief find implementation
-*/
-template <class InputRange, class ForwardRange>
-inline typename boost::range_const_iterator<InputRange>::type
-find_first_of(const InputRange& range1, const ForwardRange& range2)
-{
-    return std::find_first_of(boost::begin(range1), boost::end(range1),
-                              boost::begin(range2), boost::end(range2));
-}
-
-/*!
-    \ingroup find
-
-    \brief find implementation
-*/
-template <class InputIterator, class ForwardIterator, class BinaryPredicate>
-inline InputIterator find_first_of(InputIterator first1, InputIterator last1,
-                                   ForwardIterator first2, ForwardIterator last2,
-                                   BinaryPredicate comp)
-
-{
-    return std::find_first_of(first1, last1, first2, last2, std::bind(comp, std::placeholders::_1, std::placeholders::_2));
-}
-
-/*!
-    \ingroup find
-
-    \brief find implementation
-*/
-template <class InputRange, class ForwardRange, class BinaryPredicate>
-inline typename boost::range_iterator<InputRange>::type
-find_first_of(InputRange& range1, const ForwardRange& range2, BinaryPredicate comp)
-{
-    return adobe::find_first_of(boost::begin(range1), boost::end(range1),
-                                boost::begin(range2), boost::end(range2),
-                                comp);
-}
-
-/*!
-    \ingroup find
-
-    \brief find implementation
-*/
-template <class InputRange, class ForwardRange, class BinaryPredicate>
-inline typename boost::range_const_iterator<InputRange>::type
-find_first_of(const InputRange& range1, const ForwardRange& range2, BinaryPredicate comp)
-{
-    return adobe::find_first_of(boost::begin(range1), boost::end(range1),
-                                boost::begin(range2), boost::end(range2),
-                                comp);
-}
-
-#endif
 
 /*!
     \ingroup find

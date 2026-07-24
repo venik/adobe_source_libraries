@@ -11,8 +11,6 @@
 
 #include <adobe/iomanip.hpp>
 
-#include <adobe/string.hpp>
-
 /**************************************************************************************************/
 
 namespace adobe {

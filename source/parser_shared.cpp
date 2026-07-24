@@ -9,7 +9,6 @@
 
 #include <adobe/implementation/parser_shared.hpp>
 #include <adobe/istream.hpp>
-#include <adobe/name.hpp>
 
 using namespace std;
 

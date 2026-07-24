@@ -20,7 +20,6 @@
 
 #include <cassert>
 #include <cstddef>
-#include <functional>
 #include <iterator>
 #include <stack>
 
@@ -407,7 +406,8 @@ public:
 
     forest_iterator() : node_m(0), edge_m(forest_leading_edge) {}
 
-    forest_iterator(const forest_iterator& x) : node_m(x.node_m), edge_m(x.edge_m) {}
+    forest_iterator(const forest_iterator& x) = default;
+    forest_iterator& operator=(const forest_iterator&) = default;
 
     std::size_t edge() const { return edge_m; }
     std::size_t& edge() { return edge_m; }

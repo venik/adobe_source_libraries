@@ -7,10 +7,10 @@
 
 #include <adobe/future.hpp>
 
+#include <algorithm>
 #include <condition_variable>
 #include <list>
 #include <mutex>
-#include <queue>
 #include <vector>
 
 using namespace std;

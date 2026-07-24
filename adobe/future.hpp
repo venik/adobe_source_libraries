@@ -11,7 +11,6 @@
 #include <future>
 #include <list>
 #include <memory>
-#include <type_traits>
 #include <utility>
 
 #include <adobe/cassert.hpp>

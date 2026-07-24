@@ -6,8 +6,6 @@
 
 /**************************************************************************************************/
 
-#include <adobe/config.hpp>
-#include <adobe/implementation/zuid_sys_dep.hpp>
 #include <adobe/implementation/zuid_uuid.hpp>
 #include <adobe/once.hpp>
 #include <adobe/zuid.hpp>
@@ -15,7 +13,6 @@
 #include <array>
 #include <cstdint>
 #include <cstdio>
-#include <memory>
 #include <mutex>
 #include <string>
 #include <vector>
@@ -116,7 +113,7 @@ void format_uuid(zuid_char_buffer_t& buffer, const adobe::uuid_t& uuid) {
 /**************************************************************************************************/
 
 const adobe::uuid_t& empty_uuid() {
-    static adobe::uuid_t uuid_s = {0};
+    static adobe::uuid_t uuid_s = {0, 0, 0, {0}};
 
     return uuid_s;
 }

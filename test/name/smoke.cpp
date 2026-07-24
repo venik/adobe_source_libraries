@@ -6,9 +6,6 @@
 
 /**************************************************************************************************/
 
-// config
-#include <adobe/config.hpp>
-
 // stdc++
 #include <algorithm>
 #include <iostream>
@@ -18,7 +15,7 @@
 #define BOOST_TEST_MAIN
 
 // boost
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 // asl
 #include <adobe/name.hpp>

@@ -5,8 +5,6 @@
 */
 /**************************************************************************************************/
 
-#include <adobe/config.hpp>
-
 #include <functional>
 #include <iostream>
 #include <utility>
@@ -16,10 +14,9 @@
 #include <adobe/test/check_less_than_comparable.hpp>
 #include <adobe/test/check_null.hpp>
 #include <adobe/test/check_regular.hpp>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 #include <adobe/copy_on_write.hpp>
-#include <adobe/memory.hpp>
 
 namespace {
 

@@ -7,7 +7,7 @@
 
 #include <adobe/config.hpp>
 #include <adobe/implementation/swap.hpp>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 namespace adobe {
 /*!

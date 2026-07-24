@@ -13,13 +13,10 @@
 #include <mutex>
 #include <sstream>
 
-#include <adobe/circular_queue.hpp>
 #include <adobe/implementation/lex_shared.hpp>
 #include <adobe/implementation/token.hpp>
 #include <adobe/istream.hpp>
 #include <adobe/name.hpp>
-#include <adobe/once.hpp>
-#include <adobe/string.hpp>
 
 /**************************************************************************************************/
 
@@ -326,8 +323,7 @@ void lex_stream_t::set_comment_bypass(bool bypass) { return object_m->set_commen
 /**************************************************************************************************/
 
 lex_stream_t::implementation_t::implementation_t(std::istream& in, const line_position_t& position)
-    : _super(std::istreambuf_iterator<char>(in), std::istreambuf_iterator<char>(),
-             position),
+    : _super(std::istreambuf_iterator<char>(in), std::istreambuf_iterator<char>(), position),
       comment_bypass_m(false) {
 
     _super::set_parse_token_proc(

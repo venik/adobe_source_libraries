@@ -13,8 +13,6 @@
 #include <sstream>
 #include <string>
 
-#include <adobe/any_regular.hpp>
-#include <adobe/array.hpp>
 #include <adobe/dictionary.hpp>
 #include <adobe/eve.hpp>
 #include <adobe/eve_evaluate.hpp>
@@ -77,14 +75,16 @@ void test_print_debug() {
 
     adobe::poly_placeable_t placeable_leaf{my_leaf()};
 
-    eve.add_placeable(adobe::eve_t::iterator(), adobe::layout_attributes_t(), false, placeable_leaf, false);
+    eve.add_placeable(adobe::eve_t::iterator(), adobe::layout_attributes_t(), false, placeable_leaf,
+                      false);
 
     eve.print_debug(result);
 
     // The exact string cannot be checked for because the name of the type
     // will vary from compiler to compiler. Even so, we can ensure the attribute
     // value are correct and in the right order.
-    if (result.str().find("(left: 0, top: 0, width: 0, height: 0, horizontal: default, vertical: default, placement: leaf);") == std::string::npos) {
+    if (result.str().find("(left: 0, top: 0, width: 0, height: 0, horizontal: default, vertical: "
+                          "default, placement: leaf);") == std::string::npos) {
         fail_test();
     }
 }
@@ -125,8 +125,7 @@ void testParse(std::filesystem::path& fileName) {
     adobe::copy_utf<char>(native_path.begin(), native_path.end(), std::back_inserter(path));
 
     adobe::parse(
-        stream, adobe::line_position_t(path.c_str()),
-        adobe::eve_callback_suite_t::position_t(),
+        stream, adobe::line_position_t(path.c_str()), adobe::eve_callback_suite_t::position_t(),
         adobe::bind_layout(std::bind(&assemble, _2, _3), layout_sheet, layout_sheet.machine_m));
 }
 

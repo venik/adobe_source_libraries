@@ -14,7 +14,7 @@
 #include <string>
 
 #define BOOST_TEST_MAIN
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 using namespace std;
 using namespace adobe;

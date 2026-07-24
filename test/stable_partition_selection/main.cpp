@@ -5,38 +5,18 @@
 */
 /**************************************************************************************************/
 
-#include <adobe/config.hpp>
-
-#include <adobe/algorithm.hpp>
 #include <adobe/selection.hpp>
-
 #include <iostream>
 #include <iterator>
 #include <sstream>
 #include <utility>
 #include <vector>
 
-/**************************************************************************************************/
+#include <boost/range/begin.hpp>
+#include <boost/range/end.hpp>
 
-namespace adobe {
-
-/**************************************************************************************************/
-
-template <typename ForwardIterator>
-std::pair<ForwardIterator, ForwardIterator>
-shift_range(ForwardIterator first, ForwardIterator last, ForwardIterator range_first,
-            ForwardIterator range_last, ForwardIterator p) {
-    if (within_range(first, range_first, range_last, p))
-        return std::pair<ForwardIterator, ForwardIterator>(range_first, range_last);
-    else if (!within_range(first, range_last, last, p))
-        return shift_range(first, last, p, range_first, range_last);
-
-    return adobe::rotate(range_first, range_last, p);
-}
-
-/**************************************************************************************************/
-
-} // namespace adobe
+#include <adobe/algorithm/iota.hpp>
+#include <adobe/algorithm/selection_algorithms.hpp>
 
 /**************************************************************************************************/
 

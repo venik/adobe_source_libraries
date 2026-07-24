@@ -10,9 +10,6 @@
 #include <stdexcept>
 #include <string>
 
-#include <adobe/algorithm/for_each.hpp>
-#include <adobe/dictionary.hpp>
-
 using namespace std;
 
 /**************************************************************************************************/

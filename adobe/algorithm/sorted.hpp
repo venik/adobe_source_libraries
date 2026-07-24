@@ -15,6 +15,8 @@
 #include <boost/range/begin.hpp>
 #include <boost/range/end.hpp>
 
+#include <adobe/functional/operator.hpp>
+
 /**************************************************************************************************/
 
 namespace adobe {
@@ -34,10 +36,7 @@ template <typename I, // I models InputIterator
 I sorted(I f, I l, O o) {
 
     f = std::adjacent_find(
-        f, l,
-        [&o](const auto& first, const auto& next) {
-            return !std::invoke(o, first, next);
-        });
+        f, l, [&o](const auto& first, const auto& next) { return !std::invoke(o, first, next); });
 
     if (f != l)
         ++f;
@@ -63,11 +62,9 @@ template <typename I, // I models InputIterator
           typename O>
 // O models StrictWeakOrdering on value_type(I)
 inline bool is_sorted(I f, I l, O o) {
-    return std::adjacent_find(
-            f, l,
-            [&o](const auto& first, const auto& next) {
-                return !std::invoke(o, first, next);
-            }) == l;
+    return std::adjacent_find(f, l, [&o](const auto& first, const auto& next) {
+               return !std::invoke(o, first, next);
+           }) == l;
 }
 
 /**************************************************************************************************/
@@ -90,16 +87,9 @@ template <typename I, // I models ForwardIterator
           typename P>
 // P models UnaryFunction(value_type(I)) -> T
 inline bool is_sorted(I f, I l, C c, P p) {
-    return std::adjacent_find(
-        f, l,
-        [&c, &p](const auto& first, const auto& next) {
-            return !std::invoke(
-                c,
-                std::invoke(p, first),
-                std::invoke(p, next)
-            );
-        }
-    ) == l;
+    return std::adjacent_find(f, l, [&c, &p](const auto& first, const auto& next) {
+               return !std::invoke(c, std::invoke(p, first), std::invoke(p, next));
+           }) == l;
 }
 
 /**************************************************************************************************/

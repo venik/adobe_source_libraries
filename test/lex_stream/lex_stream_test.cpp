@@ -8,9 +8,8 @@
 #include <adobe/implementation/lex_stream.hpp>
 
 #define BOOST_TEST_MAIN
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
-#include "lex_stream_test.h"
 #include <sstream>
 
 /**************************************************************************************************/

@@ -7,10 +7,13 @@
 
 #include <adobe/algorithm/select.hpp>
 
+#include <functional>
+
 #define BOOST_TEST_MAIN
 
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 BOOST_AUTO_TEST_CASE(select_test) {
+    adobe::select_0_2(10, 5, std::less<>());
     /* PLACEHOLDER - Currently select.hpp is well tested by median and clamp. */
 }

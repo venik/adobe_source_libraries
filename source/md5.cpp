@@ -296,14 +296,17 @@ void md5_t::update(void* input_block, std::size_t input_length) {
         std::memcpy(&buffer_m[index], input_block, partLen);
         MD5Transform(state_m, buffer_m);
 
+        // input_length is always <= 64 for the padding_s call in final(), so this loop body
+        // never executes for that call; clang-analyzer can't correlate that bound across the
+        // call boundary and reports a false positive here.
         for (i = partLen; i + 63 < input_length; i += 64)
-            MD5Transform(state_m, &static_cast<std::uint8_t*>(input_block)[i]);
+            MD5Transform(state_m, &static_cast<std::uint8_t*>(input_block)[i]); // NOLINT(clang-analyzer-security.ArrayBound)
 
         index = 0;
     }
 
     /* Buffer remaining input */
-    std::memcpy(&buffer_m[index], &static_cast<std::uint8_t*>(input_block)[i], input_length - i);
+    std::memcpy(&buffer_m[index], &static_cast<std::uint8_t*>(input_block)[i], input_length - i); // NOLINT(clang-analyzer-security.ArrayBound)
 }
 
 /**************************************************************************************************/

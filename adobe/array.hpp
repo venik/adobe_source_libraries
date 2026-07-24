@@ -10,7 +10,7 @@
 
 #include <adobe/config.hpp>
 
-#include <adobe/array_fwd.hpp>
+#include <adobe/array_fwd.hpp> // IWYU pragma: export
 
 #include <adobe/any_regular.hpp>
 

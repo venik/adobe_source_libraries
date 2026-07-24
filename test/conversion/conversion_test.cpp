@@ -5,13 +5,8 @@
 */
 /**************************************************************************************************/
 
-#include <adobe/config.hpp>
-
-#include <functional>
-#include <utility>
-
 #define BOOST_TEST_MAIN
-#include <boost/test/unit_test.hpp>
+#include <boost/test/unit_test.hpp> // NOLINT(misc-include-cleaner)
 
 #include <adobe/conversion.hpp>
 

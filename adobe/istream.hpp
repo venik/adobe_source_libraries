@@ -16,7 +16,7 @@
 #include <stdexcept>
 #include <vector>
 
-#include <adobe/istream_fwd.hpp>
+#include <adobe/istream_fwd.hpp> // IWYU pragma: export
 #include <adobe/name.hpp>
 
 /**************************************************************************************************/

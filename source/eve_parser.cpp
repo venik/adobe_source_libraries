@@ -9,7 +9,6 @@
 
 #include <adobe/algorithm/binary_search.hpp>
 #include <adobe/algorithm/sorted.hpp>
-#include <adobe/any_regular.hpp>
 #include <adobe/array.hpp>
 #include <adobe/cassert.hpp>
 #include <adobe/dictionary.hpp>
@@ -18,6 +17,7 @@
 #include <adobe/name.hpp>
 #include <functional>
 #include <string>
+
 
 #include <adobe/expression_parser.hpp>
 
