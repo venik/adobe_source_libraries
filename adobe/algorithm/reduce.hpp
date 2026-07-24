@@ -16,6 +16,7 @@
 #include <adobe/functional.hpp>
 #include <adobe/iterator/type_functions.hpp>
 
+#include <iterator>
 #include <vector>
 
 /**************************************************************************************************/
